@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFE log. 法的文書（利用規約 / プライバシーポリシー）</title>
+    <style>
+        /* --- デザインシステム（ダークモード基調の洗練されたUI） --- */
+        :root {
+            /* ダークテーマのカラーパレット */
+            --bg-color: #121212;         /* 背景色（漆黒よりのグレー） */
+            --container-bg: #1C1C1E;     /* コンテンツ背景 */
+            --text-color: #F2F2F7;       /* メインテキスト（真っ白ではなく目に優しい白） */
+            --text-muted: #AEAEB2;       /* サブテキスト・日付など */
+            --accent-color: #4A90E2;     /* アクセント（リンクやハイライト用） */
+            --border-color: #38383A;     /* ボーダー・境界線 */
+            --tab-bg: #2C2C2E;           /* タブの背景 */
+            --active-bg: #48484A;        /* アクティブなタブの背景 */
+            
+            --font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, "Noto Sans JP", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- コンテナとレイアウト --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px 120px 20px;
+        }
+
+        /* --- ヘッダー・ブランドエリア --- */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .brand-title {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #F5A623, #7ED321, #4A90E2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .brand-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        /* --- リッチなタブナビゲーション --- */
+        .nav-wrapper {
+            position: sticky;
+            top: 0;
+            background-color: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 0;
+            z-index: 100;
+            margin-bottom: 40px;
+        }
+
+        .tab-nav {
+            display: flex;
+            background-color: var(--tab-bg);
+            padding: 4px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tab-btn.active {
+            color: #FFFFFF;
+        }
+
+        /* タブのインジケータ（滑らかに動く背景スライダー） */
+        .tab-slider {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            height: calc(100% - 8px);
+            width: calc(50% - 4px);
+            background-color: var(--active-bg);
+            border-radius: 10px;
+            z-index: 1;
+            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* --- コンテンツエリアのアニメーション --- */
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            background-color: var(--container-bg);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- タイポグラフィ --- */
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            color: #FFFFFF;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: linear-gradient(to bottom, #7ED321, #4A90E2);
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #E5E5EA;
+        }
+
+        p {
+            font-size: 15px;
+            margin-bottom: 18px;
+            text-align: justify;
+            color: var(--text-color);
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 24px;
+            font-size: 15px;
+            color: var(--text-color);
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* カールアウト（注意書き・補足用のミニマルな箱） */
+        .callout {
+            background-color: rgba(74, 144, 226, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 14px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .meta-date {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- レスポンシブ対応 --- */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 16px 80px 16px;
+            }
+            .content-section {
+                padding: 24px 20px;
+            }
+            .brand-title {
+                font-size: 28px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+            p, li {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="brand-title">LIFE log.</div>
+        <div class="brand-subtitle">AIをハックする、新しいライフログ</div>
+    </header>
+
+    <div class="nav-wrapper">
+        <div class="tab-nav">
+            <div class="tab-slider" id="tabSlider"></div>
+            <button class="tab-btn active" id="btn-terms" onclick="switchTab('terms', 0)">利用規約</button>
+            <button class="tab-btn" id="btn-privacy" onclick="switchTab('privacy', 1)">プライバシーポリシー</button>
+        </div>
+    </div>
+
+    <div id="terms" class="content-section active">
+        <h1>利用規約</h1>
+        <p>この利用規約（以下，「本規約」といいます。）は，『LIFE log.』（以下，「当アプリ」といいます。）が提供するスマートフォン向けアプリケーションおよびこれに付随するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って本サービスをご利用いただきます。</p>
+
+        <h2>第1条（適用）</h2>
+        <p>本規約は，ユーザーと当アプリとの間の本サービスの利用に関わる一切の関係に適用されるものとします。本サービスを利用開始した時点で，ユーザーは本規約のすべての内容に同意したものとみなされます。</p>
+
+        <h2>第2条（基本方針とデータの保存）</h2>
+        <ol>
+            <li>本サービスは，サインイン（アカウント作成）不要でご利用いただけるオフライン完結型のアプリケーションです。</li>
+            <li>ユーザーが入力した行動実績ログ，未来年表（目標）などのデータは，すべてユーザーが使用する端末のローカルストレージ内にのみ保存され，当アプリのサーバー等へ自動送信・蓄積されることは一切ありません。</li>
+        </ol>
+
+        <h2>第3条（外部AIサービスの利用に関する免責）</h2>
+        <div class="callout">
+            <strong>【重要】プロンプト生成と外部AIの利用について</strong><br>
+            本サービスは，ユーザーのデータを元に「外部のAIサービス（ChatGPTやGemini等）で分析するためのプロンプト（指示文）」を生成する機能を提供します。当アプリ自体がAPI通信を行いAIを呼び出すものではありません。
+        </div>
+        <ol>
+            <li>生成されたプロンプトをクリップボードにコピーし，外部のAIサービスへペースト（送信）する行為は，すべてユーザー自身の意思と責任において行われるものとします。</li>
+            <li>当アプリは，ユーザーが外部AIサービスに入力したデータの取り扱い，プライバシー保護，および情報漏洩について一切の責任を負いません。</li>
+            <li>外部AIサービスが生成した回答（フィードバックやアクション提案等）の正確性，適切性，有用性について，当アプリはいかなる保証も行わず，その回答に従った結果生じた損害についても一切責任を負いません。</li>
+        </ol>
+
+        <h2>第4条（禁止事項）</h2>
+        <p>ユーザーは，本サービスの利用にあたり，以下の行為をしてはなりません。</p>
+        <ol>
+            <li>法令または公序良俗に違反する行為</li>
+            <li>犯罪行為に関連する行為</li>
+            <li>本サービスの運営を妨害するおそれのある行為</li>
+            <li>本サービスのプログラムを逆コンパイル，逆アセンブル，リバースエンジニアリングする行為</li>
+            <li>当アプリの知的財産権（著作権，商標権等）を侵害する行為</li>
+            <li>その他，当アプリが不適切と判断する行為</li>
+        </ol>
+
+        <h2>第5条（データの管理責任と免責事項）</h2>
+        <ol>
+            <li>本サービスはデータを端末内にのみ保存するため，アプリの削除（アンインストール），端末の紛失・故障等によってデータが消失した場合，当アプリ側でデータを復元することは不可能です。</li>
+            <li>当アプリは，本サービスに事実上または法律上の瑕疵（安全性，信頼性，正確性，完全性，有効性，特定の目的への適合性，エラーやバグなど）がないことを保証しておりません。</li>
+            <li>当アプリは，本サービスの利用によってユーザーに生じたあらゆる損害について，一切の責任を負いません。</li>
+        </ol>
+
+        <h2>第6条（利用規約の変更）</h2>
+        <p>当アプリは，必要と判断した場合には，ユーザーに通知することなくいつでも本規約を変更することができるものとします。変更後，ユーザーが本サービスを利用した場合には，変更後の規約に同意したものとみなされます。</p>
+
+        <h2>第7条（準拠法・裁判管轄）</h2>
+        <ol>
+            <li>本規約の解釈にあたっては，日本法を準拠法とします。</li>
+            <li>本サービスに関して紛争が生じた場合には，東京地方裁判所を第一審の専属的合意管轄裁判所とします。</li>
+        </ol>
+
+        <div class="meta-date">2026年6月 改定</div>
+    </div>
+
+    <div id="privacy" class="content-section">
+        <h1>プライバシーポリシー</h1>
+        <p>『LIFE log.』（以下，「当アプリ」といいます。）は，本サービスにおいてユーザーのプライバシーを最優先に尊重し，個人情報の保護に細心の注意を払っています。本サービスは「AIのハック」をコンセプトとしており，データの安全性について以下の通りプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。</p>
+
+        <h2>第1条（個人情報の収集に関する基本方針）</h2>
+        <ol>
+            <li><strong>完全ローカル保存（非収集）：</strong> 当アプリは，ユーザーが入力する「行動実績ログ」「ひとことメモ」「未来年表（目標）」などのデータを，当アプリのサーバーに送信・収集することは一切ありません。これらのデータはすべてユーザーの端末内にのみ保存されます。</li>
+            <li><strong>アカウント登録不要：</strong> 本サービスを利用するためのアカウント登録やサインインの必要はなく，メールアドレスや電話番号等の個人情報の提供を求めることはありません。</li>
+        </ol>
+
+        <h2>第2条（プロンプト生成と外部AIの利用について）</h2>
+        <p>当アプリのコア機能である「AI分析用プロンプトの生成」に関して，以下の点にご留意ください。</p>
+        <ol>
+            <li>当アプリは，ユーザーのデータを元にテキスト（指示文）を生成し，クリップボードにコピーする機能までを提供します。アプリの裏側で当アプリがChatGPTやGemini等のAPIへデータを自動送信することはありません。</li>
+            <li>ユーザーがコピーしたデータを外部のAIサービス（OpenAI社，Google社などが提供するサービス）にペーストして利用する場合，そのデータの取り扱いは，<strong>各AIサービス提供者のプライバシーポリシー</strong>に準拠します。</li>
+            <li>機密情報や極めて個人的な情報をAIに入力するかどうかは，ユーザー自身の判断において慎重に行ってください。</li>
+        </ol>
+
+        <h2>第3条（サードパーティ製SDK・ツールの利用）</h2>
+        <p>本サービスでは，アプリの品質向上や不具合の解析（クラッシュレポート等）を目的として，個人を特定できない範囲で匿名の利用データを収集するサードパーティ製ツール（例：Appleのオプトイン解析など）を利用する場合があります。これらのデータに，ユーザーの行動ログ等の具体的なテキスト内容が含まれることはありません。</p>
+
+        <h2>第4条（免責事項）</h2>
+        <p>ユーザーが当アプリを通じて生成したテキストを外部サービスに提供した結果として生じた，いかなるプライバシー上の不利益や損害についても，当アプリは一切の責任を負いません。</p>
+
+        <h2>第5条（プライバシーポリシーの変更）</h2>
+        <p>当アプリは，法令の変更や本サービスの機能追加に伴い，本ポリシーを随時改定することができるものとします。変更後のプライバシーポリシーは，本ページに掲載された時点から効力を生じるものとします。</p>
+
+        <h2>第6条（お問い合わせ）</h2>
+        <p>本ポリシーに関するご質問やご不明点がある場合は，アプリ内の設定画面にあるお問い合わせ窓口，または開発者の連絡先よりお問い合わせください。</p>
+
+        <div class="meta-date">2026年6月 改定</div>
+    </div>
+</div>
+
+<script>
+    /**
+     * 滑らかなタブ切り替えアニメーション
+     */
+    function switchTab(targetId, index) {
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        buttons[index].classList.add('active');
+
+        const slider = document.getElementById('tabSlider');
+        slider.style.transform = `translateX(${index * 100}%)`;
+
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            if (section.classList.contains('active')) {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    section.classList.remove('active');
+                }, 250);
+            }
+        });
+
+        setTimeout(() => {
+            const activeSection = document.getElementById(targetId);
+            activeSection.classList.add('active');
+            // 少しだけ遅らせてアニメーションを開始
+            setTimeout(() => {
+                activeSection.style.opacity = '1';
+                activeSection.style.transform = 'translateY(0)';
+            }, 50);
+        }, 250);
+    }
+
+    /**
+     * URLのハッシュ（#privacy や #terms）から初期タブを自動判定
+     */
+    function handleInitialTab() {
+        const hash = window.location.hash;
+        if (hash === '#privacy') {
+            // プライバシーポリシーを即座に表示
+            document.getElementById('terms').classList.remove('active');
+            
+            const privacySection = document.getElementById('privacy');
+            privacySection.classList.add('active');
+            privacySection.style.opacity = '1';
+            privacySection.style.transform = 'translateY(0)';
+            
+            document.getElementById('btn-terms').classList.remove('active');
+            document.getElementById('btn-privacy').classList.add('active');
+            
+            document.getElementById('tabSlider').style.transform = 'translateX(100%)';
+        } else {
+            // デフォルト（#terms またはハッシュなし）は利用規約を表示
+            const termsSection = document.getElementById('terms');
+            termsSection.style.opacity = '1';
+            termsSection.style.transform = 'translateY(0)';
+        }
+    }
+
+    // DOM読み込み完了時に実行
+    window.addEventListener('DOMContentLoaded', handleInitialTab);
+</script>
+</body>
+</html>
